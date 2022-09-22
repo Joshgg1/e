@@ -7,18 +7,22 @@
             ✨Adult Internet Interview✨
         </title>
         <style>
-           
+            titlepage{
+                color:rgb(132, 0, 255)
+                
+            }
+           /*Reduces the line space for emoji person*/
             .adjust-line-height 
             {
                 /*Retrieved from https://medium.com/swlh/how-to-add-or-reduce-space-between-lines-of-text-using-just-html-and-css-bdd22708f971*/
                 line-height: .3em;
-                color:blueviolet
+                
             }
             body{
-                
+                /*Style of body and border/fonts and color*/
                 font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, Helvetica, sans-serif;
                 text-align: center;
-                color:rgb(231, 231, 231);
+                
                 border: green;
                 border-style: double;
                 border-width: 1rem;
@@ -26,8 +30,12 @@
                 box-sizing: border-box;
                 
             }
-            h1, h2, h3{
+            h1{
+                color:red
+            }
+            h2, h3{
                 text-align: center;
+                color:rgb(231, 231, 231);
             }
             p {
                 text-align: center;
@@ -38,7 +46,9 @@
                 width: 40%;
                 border: 3px solid black;
                 border-collapse: collapse;
+                color:rgb(231, 231, 231);
             }
+            /*colors of output depending on impact class*/
             low{
                 color: red;
             }
@@ -59,7 +69,7 @@
         
 
         
-       
+       //Submit function which peforms all operations including calculating years, length of textbox, checkbox count, Impact Variable, Current Year, and OUTPUT.
         function submitThis()
         {
             //variables
@@ -67,15 +77,18 @@
             //length of textbox
             var length = document.getElementById("ideaId").value.length;
             var impactVar = ""
+            //checked variables
             var checked = 0
             var text = document.getElementById("otherId");
-            let isChecked1 = document.getElementById('eatId').checked;
-            let isChecked2 = document.getElementById('nerdId').checked;
-            let isChecked3 = document.getElementById('notlivingunderadamnrockId').checked;
-            let isChecked4 = document.getElementById('hasfriendsId').checked;
-            let isChecked5 = document.getElementById('netflixId').checked;
-            let isChecked6 = document.getElementById('richId').checked;
-            let isChecked7 = document.getElementById('susId').checked;
+            let isChecked1 = document.getElementById('famId').checked;
+            let isChecked2 = document.getElementById('socializingId').checked;
+            let isChecked3 = document.getElementById('nerdId').checked;
+            let isChecked4 = document.getElementById('newsId').checked;
+            let isChecked5 = document.getElementById('contactId').checked;
+            let isChecked6 = document.getElementById('netflixId').checked;
+            let isChecked7 = document.getElementById('financeId').checked;
+            let isChecked8 = document.getElementById('shopId').checked;
+            let isChecked9 = document.getElementById('otherId').checked;
             //is checked?
             if(isChecked1)
             {
@@ -105,8 +118,16 @@
             {
                 checked++
             }
-            checked++
-            //css abd impact
+            if(isChecked8)
+            {
+                checked++
+            }
+            if(isChecked9)
+            {
+                checked++
+            }
+            
+            //css class impact
             if(checked<= 2)
             {
                 impactVar = "<low>LOW</low>"
@@ -123,6 +144,7 @@
             }
             //current year
             let CURRENT_YEAR = (2022 - year);
+            //(enhancement)Change image depending on impact
             if(CURRENT_YEAR<10)
             {
                 document.getElementById("changeImg").src = "red.jfif"  
@@ -145,6 +167,7 @@
             var summary = ""
            summary+= "Sup " + name + " " + lName + "! You have been trying to figure out the internet for a whopping " + CURRENT_YEAR + " year(s)! Your written response is " + length 
             + " characters long(including spaces)! You checked off " + checked + " item(s) which indicates that the internet has had a " + impactVar + " impact on your life!"
+            //putting output into body
             document.getElementById('thisSummaryId').innerHTML = summary;
 
            
@@ -164,6 +187,7 @@
     <body style="background-color: #27cbfd;">
         <marquee style="background-color: #3ab0ff">WELCOME ELDERLY PEOPLE</marquee>
         You lol:
+        <!--Emoji for fun-->
         <div class="adjust-line-height">
         <h1>🧓</h1>
         
@@ -183,13 +207,15 @@
        <br>
  _/                \_
         </div>
-        <center><h1>✨Adult Internet Interview✨</h1>
+        <!--Title-->
+        <center><h1 style="color:red;">✨Adult Internet Interview✨</h1>
             <h3>🧓Open this program to show off to any adult in your family!
-                Have them enter in their own responses to each question below related to their personal experience with the internet from their childhood🧓</h3>
+                Have them enter in their own responses to each question below related to their personal experience with the internet from their childhood🧓 and their first time on the internet. Created by Josh!</h3>
                 <br>
-                
+            <!--(Enhancement)Image for changing based on Impact or on mouse over/out-->
             <img id="changeImg"  onmouseover="changeImgOn(this)" onmouseout="changeImgOff(this)" src = "elder-internet-use.webp" width="600" height="300">
             <br><br>
+            <!--ENTER ALL INFORMATION HERE-->
             First Name: <input type = "text" id = "fNameId" placeholder="First Name" size = "58">
             <br><br>
             Last Name: <input type = "text" id = "lNameId" placeholder="Last Name" size = "58">
@@ -202,31 +228,35 @@
             <br>
             <!--Refrenced from w3schools on 9/15/22 at 1:38:41-->
             <textarea id="ideaId" name="Your Experience with the Internet" rows="4" cols="50"></textarea>
-            
+            <!--Checkboxes for impactVar-->
             <h3>Keeping in touch with family and/or friends <input type = "checkbox" id="famId">
             <br>
-            Organizing parties, dinners, or events <input type = "checkbox" id="eatId">
+            Organizing parties, dinners, or events <input type = "checkbox" id="socializingId">
             <br>
             Researching information on a particular topic<input type = "checkbox" id="nerdId">
             <br>
-            Following current events <input type = "checkbox" id="notlivingunderadamnrockId">
+            Following current events <input type = "checkbox" id="newsId">
             <br>
-            Make a phone call (from work, home, hotel, or public place)<input type = "checkbox" id="hasfriendsId">
+            Make a phone call (from work, home, hotel, or public place)<input type = "checkbox" id="contactId">
             <br>
             Watching a movie <input type = "checkbox" id="netflixId">
             <br>
-            Keeping track of finances<input type = "checkbox" id="taxId">
+            Keeping track of finances<input type = "checkbox" id="financeId">
             <br>
-            Shopping for goods and services<input type = "checkbox" id="richId">
+            Shopping for goods and services<input type = "checkbox" id="shopId">
             <br>
-            Other 🤨:<input type="checkbox" id="susId"
-            <textarea style="display:none" id="otherId" name="Other" rows="4" cols="50"></textarea>
+            Other 🤨:<input type="checkbox" id="otherId"
+          
             </h3>
             <br><br>
-            <input type = "button" value = "Submit" onclick="submitThis()">
-            
+            <!--This button initializes the function to submit the data inputed on the form/interview-->
+            <input type = "button" value = "Submit" onClick="submitThis()">
+            <br>
+            <!--(Enhancement)Button redirects you to w3schools!-->
+            <input type="button" value="Click This for a surprise!" onClick = "window.open('http://www.w3schools.com')">
+            <!--DIV for Output/Summary goes here!-->
             <div id="thisSummaryId"></div>
-            
+            <!--Prank for fun(not harmful)-->
             PLEASE SCROLL DOWN FOR MORE INFORMATION:
             <br><br>
             <br><br>
